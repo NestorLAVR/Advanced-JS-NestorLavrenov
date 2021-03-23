@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>All, Elements</title>
+    <style>
+    /* * {
+        color: red;
+        text-decoration: none;
+    }
+    p {
+        color: brown;
+    }
+    .class {
+        color: green;
+    }
+    a {
+        font-weight: bold;
+        font-style: italic;
+        text-decoration: underline;
+    }
+    p, a {
+        text-transform: uppercase;
+    } */
+    </style>
+</head>
+<body>
+    <h1 class="class1" id="id1">Title</h1>
+    <p class="class">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+    <a href="#">Link</a>
+    <button onclick="myFunction()">Изменить</button>
+    <script>
+        function myFunction() {
+            let allElements = document.body.children;
+            for ( let i = 0; i < allElements.length; i++) {
+                allElements[i].style.color = "red";
+                allElements[i].style.textDecoration = "none";
+            };
+            let paragraphs = document.querySelectorAll("p");
+            for ( let i = 0; i < paragraphs.length; i++) {
+                paragraphs[i].style.color = "brown";
+            };
+            let links = document.querySelectorAll("a");
+            for ( let i = 0; i < links.length; i++) {
+                links[i].style.fontWeight = "bold";
+                links[i].style.fontStyle = "italic";
+                links[i].style.textDecoration = "underline";
+            };
+            let linkParagr = document.querySelectorAll("a, p");
+            for (let i = 0; i < linkParagr.length; i++) {
+                linkParagr[i].style.textTransform = "uppercase";
+            };
+            let classSelect = document.querySelector(".class");
+            classSelect.classList.add("newclass");
+            let class1Select = document.querySelector(".class1");
+            class1Select.classList.add("newclass");
+            let id1Select = document.querySelector("#id1");
+            id1Select.style.marginTop = "10px";
+            id1Select.style.background = "green";
+
+        }
+    </script>
+</body>
+</html>

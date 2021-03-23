@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Id and classes</title>
+    <style>
+        /* #id1 {
+            color: red;
+        }
+        div.class1 {
+            color: blue;
+            font-size: 14px;
+            text-decoration: underline;
+        } */
+    </style>
+</head>
+<body>
+    <h1 id="id1">Title</h1>
+    <div class="class1" >
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla consequuntur, obcaecati recusandae enim laboriosam eaque, sint incidunt. Perferendis mollitia incidunt blanditiis eveniet, fuga sapiente. Magni dicta maxime fugiat sint soluta?        
+    </div>
+    <button onclick="myFunction()">Изменить</button>
+    <script>
+        function myFunction() {
+            let testId = document.querySelector("#id1");
+            testId.style.color = "red";
+            testId.style.marginTop = "10px";
+            testId.style.background = "green";
+            let testClass = document.querySelector("div.class1");
+            testClass.style.color = "blue";
+            testClass.style.fontSize = "14px";
+            testClass.style.textDecoration = "underline";
+            testClass.classList.add("newclass")
+            console.log("ComputedStyle: ", getComputedStyle(testClass));
+        }
+    </script>
+</body>
+</html>

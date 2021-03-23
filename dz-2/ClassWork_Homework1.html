@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <title>Classwork</title>
+    <style type="text/css">
+
+    </style>
+</head>
+<body>
+    <div id="one">one</div>
+
+    <script>
+        let anchor = document.querySelector('#one');
+        anchor.insertAdjacentHTML("afterend", "<div id='two' onclick='insertSecond(this)' style='cursor: pointer'>two</div>")
+        function insertSecond(before){
+           before.id = "two_second";
+           before.insertAdjacentHTML("beforeBegin", "<div id='two_first'>two</div>")
+        }
+    // Добавьте после дива с id=one еще один див с текстом two и id=two
+    // На клик по id=two добавьте перед ним див с id - two_first, а див с id=two измените на two_second 
+    </script>
+</body>
+</html>

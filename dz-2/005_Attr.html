@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Attr</title>
+    <style>
+        /* a[target] {
+            background-color: yellow;
+        }
+        a[target='_blank'] { 
+            background-color: red;
+        } */
+    </style>
+</head>
+<body>
+    <a href="#">w3schools.com</a>
+    <a href="http://www.google.com" target="_blank">google.com</a>
+    <a href="http://www.wikipedia.org" target="_self">wikipedia.org</a>
+    <a href="#">Someting</a>
+    <script>
+        let attributed = document.querySelectorAll("[target]");
+        if (attributed !== null) {
+            for (let i=0; i < attributed.length; i++) {
+                attributed[i].style.backgroundColor = "yellow";
+            }
+        }
+        let attr_val = document.querySelectorAll("[target='_blank']");
+        if (attr_val !== null) {
+            for (let i=0; i < attr_val.length; i++) {
+                attr_val[i].style.backgroundColor = "red";
+            }
+        }
+    </script>
+</body>
+</html>
