@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <title>Homework</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            line-height: 50px;
+            background-color: red;
+            margin: 15px;
+        }
+    </style>
+</head>
+<body>
+    <!--
+    1. Создайте 5 блоков с текстом. Добавьте в каждый из блоков кнопку для его удаления.
+    Используйте только один обработчик.
+
+    2. Доработайте пример 004_Attr_Tech.html таким образом, чтобы при наведении на span элементы,
+    подсказка сплыва под ними, а не в модальном окне. Используйте addEventListener -->
+</body>
+    <div class="box">текст1<button class="deleter">удалить</button></div>
+    <div class="box">текст2<button class="deleter">удалить</button></div>
+    <div class="box">текст3<button class="deleter">удалить</button></div>
+    <div class="box">текст4<button class="deleter">удалить</button></div>
+    <div class="box">текст5<button class="deleter">удалить</button></div>
+    <script>
+        const buttons = document.querySelectorAll(".deleter")
+        for (let i = 0; i < buttons.length; i++){
+            buttons[i].addEventListener("click", deleteParent)
+        }
+        function deleteParent(event) {
+            this.parentNode.remove();
+                     
+        }
+    </script>
+    
+
+</html>

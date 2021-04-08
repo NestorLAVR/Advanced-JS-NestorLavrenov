@@ -1,0 +1,39 @@
+<!-- 
+    Запросите у пользователя ввести какую-то фразу. 
+    Отобразите каждое отдельное слово в виде списка ul li. 
+    Также отобразите первое слово UPPERCASE, а последние 2 с маленькой. 
+    Найдите все буквы "а" их количество в модальное окно. 
+ -->
+ 
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <title>Homework</title>
+</head>
+<body>
+        <ul id = "wordList">
+
+        </ul>
+        <script>
+            let message = prompt("Введите фразу", "");
+            let reg = /[a-zа-я]+/gi;
+            let wordArr = message.match(reg);
+            let target = document.querySelector("#wordList")
+            if (wordArr.length > 2) {
+                wordArr[0] = wordArr[0].toUpperCase();
+                wordArr[wordArr.length - 1] = wordArr[wordArr.length - 1].toLowerCase();
+                wordArr[wordArr.length - 2] = wordArr[wordArr.length - 2].toLowerCase();
+            }
+            else if (wordArr.length > 0) {
+                wordArr[0] = wordArr[0].toUpperCase();
+                wordArr[wordArr.length - 1] = wordArr[wordArr.length - 1].toLowerCase();
+            }
+            target.innerHTML = wordArr.reduce(function(res, curr) {
+                return res.concat(`<li>${curr}</li>`)
+            }, '')
+            let aCount = new RegExp("a", "gi");
+            alert(message.match(aCount).length);
+        </script>
+</body>
+</html>

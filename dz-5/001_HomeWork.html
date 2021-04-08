@@ -1,0 +1,36 @@
+<!--
+Создайте ссылку и див с текстом внутри, который изначально при загрузке страницы будет скрыт.
+При клике на ссылку див появляется, если повторно нажать ссылку див и текст должны пропасть.
+Также создайте кнопку, которая будет отменять выполнение обработчика клика по ссылке.
+ -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width,user-scalable=no">
+    </head>
+    <style>
+        .visibility {
+            display: none;
+        }
+    </style>
+    <body>
+        <a href="https://google.com">Ccылочка</a>
+        <button class = "myclass">Кнопочка</button>
+        <div id="tester"  class="visibility">Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, perferendis.</div>
+        <script>
+            let link = document.querySelector('a');
+            let btn = document.querySelector('.myclass');
+            let toShow = document.querySelector('#tester');
+            link.addEventListener('click', function(event){
+                event.preventDefault();
+            })
+            function show (event) {
+                tester.classList.toggle('visibility');
+            }
+            link.addEventListener('click', show);
+            btn.addEventListener('click', function(event) {
+                link.removeEventListener('click', show);
+            })
+        </script>
+    </body>
+</html>

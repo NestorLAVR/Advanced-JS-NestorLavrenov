@@ -1,0 +1,63 @@
+<!-- Доработайте пример, 005_thisExample.html, при наведении мыши к одному из блоков, цвет блока должен измениться, на уникальный, такой которого еще нету у существующих блоков.
+Также выведите в блок текстовое оповещение о информации цвета, который используется для фона данного блока.
+При попытке закрыть вкладку, придупредите пользователя о том что информация будет утеряна. Используйте window.onload.  -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ключевое слово this</title>
+    <style>
+        div {
+            background-color:green;
+            display: inline-block;
+            height: 100px;
+            width: 150px;
+            line-height: 100px;
+            text-align: center;
+        }
+    </style>
+    <script>
+        
+    </script>
+</head>
+<body>
+    <div>red</div>
+    <div>red</div>
+    <div>red</div>
+    <div>red</div>
+    <div>red</div>
+    <script>      
+        const colorArr = [];
+        let randColor;
+        const divArr = document.getElementsByTagName("div");
+        for (let i = 0; i < divArr.length; i++) {
+            colorArr.push("red");
+            divArr[i].style.backgroundColor = "red";
+            divArr[i].onclick = function () {
+                this.style.backgroundColor = "rgb(33,112,123)";
+            }
+            divArr[i].onmouseover = function () {
+                randColor = generateRandColor();
+                let prevColor =  this.style.backgroundColor;            
+                let index = colorArr.indexOf(randColor);
+                while (index != -1) {
+                    randColor = generateRandColor();
+                    index = colorArr.indexOf(randColor);
+                }
+                let prevInd = colorArr.indexOf(prevColor);
+                colorArr.splice(prevInd, 1);
+                colorArr.push(randColor);   
+                this.style.backgroundColor = randColor;
+                this.innerText = randColor;
+            }
+        }
+        window.addEventListener('beforeunload', (event) => {
+            event.returnValue = `Are you sure you want to leave?`;
+        });
+
+        function generateRandColor() {
+            return `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Homework</title>
+</head>
+<body>
+    <script>
+        let action = "continue",
+        counter = 1;
+        function timer(){
+            if (counter<30 && action=="continue" ){
+                console.log(counter++)       
+                setTimeout(timer, 1000);
+            } else if(action == "reset") {
+                counter = 0;
+                action = "continue";
+                setTimeout(timer, 1000);
+            } else if (action === "stop"){
+                action = "continue";
+            }else if(action == "resetW") {
+                counter = 0;
+                action = "continue";
+            } else {
+                counter = 0;
+            }
+        };
+        function stop(){
+            action = "stop";
+        }
+        function  reset() {
+            action = "reset";
+        }
+        function  resetW() {
+            action = "resetW";
+        }
+    </script>
+    <button onclick="setTimeout(timer, 1000)">start/continue</button>
+    <button onclick="stop()">stop count</button>
+    <button onclick="reset()">reset count</button>
+    <button onclick="resetW()">reset count and wait</button>
+<!-- Создайте счетчик секунд, который начинает отчет с 1 и заканчивается на 30,
+также добавьте кнопки которые останавливают отчет, и запускают его заново и добавьте кнопку
+обнуляющую отcчет. Также попробуйте изменить код так чтобы отсчет начинался с 30 и заканчивался на 1. -->
+</body>
+</html>
