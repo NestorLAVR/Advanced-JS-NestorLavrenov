@@ -1,0 +1,48 @@
+<!-- Реализуйте последние 2 слайда в презентации с помощью пройденого на уроке материала -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework</title>
+    
+</head>
+<body>
+    <script>
+        class Man {
+            eat () {
+            return 'I am eating';
+            }
+            walking () {
+            return 'I am walking';
+            }
+            drinking () {
+            return 'I am drinking';
+            }
+        }
+        class Soldier extends Man {
+            shoot() {
+                return 'pew-pew'
+            }
+        }
+        class Doctor extends Man {
+            cure() {
+                return 'i`m curing'
+            }
+        }
+        class Dentist extends Doctor {
+            cure() {
+                return 'treating teath'
+            }
+        }
+        class Surgeon extends Doctor {
+            cure() {
+                return 'Performing operation'
+            }
+        }
+        const surgeon = new Surgeon()
+        console.log(surgeon.cure())
+        const soldaten = new Soldier();
+        console.log(soldaten.shoot() + '\n' + soldaten.eat())
+    </script>
+</body>
+</html>
