@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+	<title>HomeWork</title>
+	<style>
+		#dragger {
+			position: absolute;
+			width: 100px;
+			height: 100px;
+			top: 200px;
+			left: 200px;
+			background-color: blue;
+		}
+		#traveler {
+			position: absolute;
+			width: 100px;
+			height: 100px;
+			top: 600px;
+			background-color: green;
+		}
+		button {
+			border: 5px solid black;
+			width: 70px;
+			height: 70px;
+			margin-top: 720px;
+		}
+	</style>
+</head>
+<body>
+	<button id='btn'>Кнопка</button>
+	<div id="dragger"></div>
+	<div id="traveler"></div>
+    <!-- 
+	1. drag and drop;
+	2. создайте div, при клике на него, div начинает двигаться вправо, при клике на кнопку - останавливается,
+	при попадании div к краю окна, он переходит к началу окна.
+	-->
+	<script>
+		const dragger = document.getElementById('dragger');
+		const move = (e) => {
+			const endDrag = (e) => {
+				document.removeEventListener('mousemove', moveAt);
+    			dragger.removeEventListener('mouseup', endDrag);
+			}
+			const moveAt = (e) => {
+    			dragger.style.left = e.pageX - dragger.offsetWidth / 2 + 'px';
+    			dragger.style.top = e.pageY - dragger.offsetHeight / 2 + 'px';
+  			}
+			document.addEventListener('mousemove', moveAt); 
+			dragger.addEventListener('mouseup', endDrag);
+		}
+		dragger.addEventListener('mousedown', move)
+		
+		const traveler = document.getElementById('traveler');
+		const btn = document.getElementById('btn');
+		const step = (e) => {
+				traveler.style.left = `${parseInt(traveler.style.left)+2}px`;
+			}
+		const travel = (e) => {
+			const step = (e) => {
+				if  (parseInt(traveler.style.left) < parseInt(document.body.clientWidth) - parseInt(getComputedStyle(traveler).width)){
+				traveler.style.left = `${parseInt(getComputedStyle(traveler).left)+5}px`}
+				else traveler.style.left = '0px';
+			}	
+			const interval =setInterval(step, 20);	
+			btn.addEventListener('click', function (){clearInterval(interval)})
+		}
+		traveler.addEventListener('click', travel);
+		
+	</script>
+</body>
+</html>

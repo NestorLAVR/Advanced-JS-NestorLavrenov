@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Пример проверки достоверности ввода</title>
+    <script type="text/javascript" src="Validate.js"></script>
+    <style type="text/css">
+        .invalidated {
+            background-color: Pink;
+        }
+
+        .validated {
+            background-color: rgb(174, 238, 144);
+        }
+    </style>
+    <script>
+        window.addEventListener('load', function(){
+            const mainForm = document.forms[0];
+
+            const formChildren = mainForm.elements;
+            for (let i = 0; i< formChildren.length; i++) {
+                formChildren[i].addEventListener('blur', function(e){
+                const name = formChildren[i].getAttribute('name');
+                let isValid = ''
+                switch(name) {
+                    case 'userName': isValid = /^[a-zA-Z ]+$/; break;
+                    case 'email': isValid =  /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i; break;
+                    case 'zip': isValid = /(^\d{5}$)|(^\d{5}-\d{4}$)/; break;
+                }
+                if (!this.value.match(isValid)) {
+                    this.className = 'invalidated';
+                } else {
+                    this.className = 'validated'
+                }
+                e.preventDefault();
+            })
+                formChildren[i].addEventListener('focus', function(e) {
+                    this.className = '';
+                    e.preventDefault();
+                })
+            }
+        })
+    </script>
+</head>
+<body>
+    <form name="form1">
+            Name:
+        <input type="text" name="userName" /><br />
+            email:
+        <input type="text" name="email" /><br />
+            zipcode:
+        <input type="text" name="zip" /><br />
+        <input type="submit" />
+    </form>
+</body>
+</html>
