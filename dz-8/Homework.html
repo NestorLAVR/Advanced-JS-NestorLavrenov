@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        .modalDialog {
+            position: fixed;
+            font-family: Arial, Helvetica, sans-serif;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: rgba(0,0,0,0.8);
+            z-index: 99999;
+            -webkit-transition: opacity 400ms ease-in;
+            -moz-transition: opacity 400ms ease-in;
+            transition: opacity 400ms ease-in;
+            display: none;
+            pointer-events: none;
+        }
+        .modalDialog:target {
+    	    display: block;
+    	    pointer-events: auto;
+        }
+        .modalDialog > div {
+            width: 400px;
+            position: relative;
+            margin: 10% auto;
+            padding: 5px 20px 13px 20px;
+            border-radius: 10px;
+            background: #fff;
+            background: -moz-linear-gradient(#fff, #999);
+            background: -webkit-linear-gradient(#fff, #999);
+            background: -o-linear-gradient(#fff, #999);
+        }
+        #close {
+            background: #606061;
+            color: #FFFFFF;
+            line-height: 25px;
+            position: absolute;
+            right: -12px;
+            text-align: center;
+            top: -10px;
+            width: 24px;
+            text-decoration: none;
+            font-weight: bold;
+            -webkit-border-radius: 12px;
+            -moz-border-radius: 12px;
+            border-radius: 12px;
+            -moz-box-shadow: 1px 1px 3px #000;
+            -webkit-box-shadow: 1px 1px 3px #000;
+            box-shadow: 1px 1px 3px #000;
+        }
+
+    .close:hover { background: #00d9ff; }
+    </style>
+    
+    <title>Homework</title>
+</head>
+<body>
+    <a href="#openModal" id='start'>Войти/сменить пользователя</a>
+    <div style="height: 30px;color:green" id='response'></div>
+    <div id="openModal" class="modalDialog">
+        <div>
+            <a href="#" title="Закрыть" id="close">X</a>
+            <form>
+                <label for=""><div>Name</div><input type="text"></label>
+                <input id="enter" type="button" value="Enter">
+                <div style="height: 30px; color: purple;" id='error'></div>
+            </form>
+        </div>
+    </div>
+    <script>
+        document.getElementById('enter').addEventListener('click', tryEnter);
+        function tryEnter(e){
+            const form = document.forms[0];
+            let name = form.elements[0].value; 
+            document.getElementById('response').innerHTML = "";          
+            if (name == 'admin' || name == 'Admin'){
+                document.cookie = "name=" + name;
+                window.localStorage.setItem("name", name)
+                // document.getElementById('response').innerHTML = "Вход выполнен пользователем " +  findCookieValue('name');
+                document.getElementById('response').innerHTML = "Вход выполнен пользователем " +  window.localStorage.getItem('name');
+                window.location.hash = 'start' ;
+                document.getElementById('error').innerHTML = '';
+            } else {
+                document.getElementById('error').innerHTML = "Нет пользователя с именем " + name;
+            }
+        }
+        function findCookieValue(cookieName) {
+                const allcookies = document.cookie;
+                const pos = allcookies.indexOf(cookieName + "=");
+
+                // Если cookie с указанным именем найден, извлечь его значения.
+                if (pos != -1) {
+                    const start = pos + cookieName.length + 1;
+                    let end = allcookies.indexOf(";", start);
+                    if (end == -1) end = allcookies.length;
+                    let value = allcookies.substring(start, end);
+                    value = decodeURIComponent(value);
+                    return value;
+                }
+            };
+    </script>
+
+    <!-- Создайте страницу которая запрашивает имя пользователя, если пользователь вводит "Admin" либо "admin" он попадает на страницу,
+    которая оповещает его о том что " Пользоваетль Admin(не статическая строка, а данные что ввел пользователь) вошел в систему"
+    а рядом разместите кнопку "Выход" которая вернет пользователя к модальному окну ввода логина. Реализуйте код как для куки так и для localstorage. -->
+</body>
+</html>
