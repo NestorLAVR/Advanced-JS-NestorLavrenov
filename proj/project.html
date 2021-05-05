@@ -4,9 +4,54 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
     <title>Document</title>
 </head>
 <body>
+    <div id="filter"></div>
+    <div id="modal">
+        <h2 class="modalHeading"><span class="modalHeadingText"></span></h2>
+        <table style = 'border-collapse: collapse; border: none'>
+            <tbody>
+                <tr><td><span class = "tableAttribute">Год рождения</span></td><td><span class = "tableValue"></span></td></tr>
+                <tr><td><span class = "tableAttribute">Пол</span></td><td><span class = "tableValue"></span></td></tr>
+                <tr><td><span class = "tableAttribute">Список фильмов</span></td><td><span class = "tableValue"></span></td></tr>
+                <tr><td><span class = "tableAttribute">Родная планета</span></td><td><span class = "tableValue"></span></td></tr>
+                <tr><td><span class = "tableAttribute">Подвид</span></td><td><span class = "tableValue"></span></td></tr>
+            </tbody>
+        </table>
+        <span id="closeModal">X</span>
+    </div>
+    <div class="container-fluid">
+        <div class="row wrapper">
+            <div class="col-xl-3 col-lg-4 col-sm-9 row holder justify-content-around flex-align-between" id="persons">
+                <button class="tab col-sm-5 col-lg-12" name="1"><span class="text">Luke Skywalker WTF</span></button>
+                <button class="tab col-sm-5 col-lg-12" name="2"><span class="text"></span></button>
+                <button class="tab col-sm-5 col-lg-12" name="3"><span class="text"></span></button>
+                <button class="tab col-sm-5 col-lg-12" name="4"><span class="text"></span></button>
+                <button class="tab col-sm-5 col-lg-12" name="5"><span class="text"></span></button>
+                <button class="tab col-sm-5 col-lg-12" name="6"><span class="text"></span></button>
+                <button class="tab col-sm-5 col-lg-12" name="7"><span class="text"></span></button>
+                <button class="tab col-sm-5 col-lg-12" name="8"><span class="text"></span></button>
+                <button class="tab col-sm-5 col-lg-12" name="9"><span class="text"></span></button>
+                <button class="tab col-sm-5 col-lg-12" name="10"><span class="text"></span></button>                            
+            </div>            
+        </div>
+        <div class="row">
+            <div id="pagination" class="d-flex col-xl-3 col-lg-4 col-sm-9 justify-content-around wrapper">
+                <button class="page" value="1">1</button>
+                <button class="page" value="2">2</button>
+                <button class="page" value="3">3</button>
+                <button class="page" value="4">4</button>
+                <button class="page" value="5">5</button>
+                <button class="page" value="6">6</button>
+                <button class="page" value="7">7</button>
+                <button class="page" value="8">8</button>
+                <button class="page" value="9">9</button>
+            </div>
+        </div>    
+    </div>
     <script src = 'project.js'></script>
 </body>
 </html>
